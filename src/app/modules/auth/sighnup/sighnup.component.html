@@ -1,0 +1,17 @@
+<mat-card>
+    <img mat-card-image src="../../../../assets/umbrella-logo.png">
+    <form class="form" [formGroup]="registerForm">
+        <mat-form-field class="form-control">
+            <mat-label>Your email</mat-label>
+            <input matInput formControlName="email" type="text" />
+        </mat-form-field>
+        <mat-form-field class="form-control">
+            <mat-label>Your password</mat-label>
+            <input matInput formControlName="password" type="text" />
+        </mat-form-field>
+        <div class="form-footer">
+            <button mat-button (click)="createUser()">Create User</button>
+            <a routerLink="/login">Go To Login</a>
+        </div>
+    </form>
+</mat-card>
