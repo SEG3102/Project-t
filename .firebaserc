@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "project-t-109bd": {
+      "hosting": {
+        "project-t": [
+          "project-t-109bd"
+        ]
+      }
+    }
+  }
+}
