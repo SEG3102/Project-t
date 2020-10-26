@@ -1,3 +1,4 @@
+import { UtilsService } from './../../../core/services/utils.service';
 import { Router } from '@angular/router';
 import {
   FormGroup,
@@ -5,7 +6,6 @@ import {
   FormControl,
   Validators,
 } from '@angular/forms';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { Component, OnInit, HostBinding } from '@angular/core';
 
 @Component({
@@ -16,7 +16,7 @@ import { Component, OnInit, HostBinding } from '@angular/core';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   constructor(
-    private auth: AngularFireAuth,
+    private utils: UtilsService,
     private fb: FormBuilder,
     private router: Router
   ) {}
@@ -29,9 +29,8 @@ export class LoginComponent implements OnInit {
   }
   onLogin() {
     const { email, password } = this.loginForm.value;
-    console.log(email)
-    this.auth
-      .signInWithEmailAndPassword(email, password)
+    this.utils
+      .loginEmail(email, password)
       .then(() => {
         this.router.navigate(['']);
     console.log("nav")  });

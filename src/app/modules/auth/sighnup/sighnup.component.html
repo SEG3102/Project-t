@@ -9,6 +9,14 @@
             <mat-label>Your password</mat-label>
             <input matInput formControlName="password" type="text" />
         </mat-form-field>
+        <mat-form-field class="form-control">
+            <mat-label>Your name</mat-label>
+            <input matInput formControlName="name" type="text" />
+        </mat-form-field>
+        <mat-form-field class="form-control">
+            <mat-label>Your last name</mat-label>
+            <input matInput formControlName="lastName" type="text" />
+        </mat-form-field>
         <div class="form-footer">
             <button mat-button (click)="createUser()">Create User</button>
             <a routerLink="/login">Go To Login</a>
