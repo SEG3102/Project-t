@@ -32,15 +32,8 @@ export class UtilsService {
     return this.afAuth.signInWithEmailAndPassword(email, pwd);
   }
 
-  createUser(email, pwd, name, lastName) {
-    this.afAuth.createUserWithEmailAndPassword(email, pwd);
-    this.loginEmail(email, pwd).then(this.router.navigate['']);
-    this.getAuthState().subscribe((s) => {
-      this.setUserDoc('USERS', s.uid, {
-        name: name,
-        lastName: lastName,
-      });
-    });
+  createUser(email, pwd) {
+    return this.afAuth.createUserWithEmailAndPassword(email, pwd);
   }
 
   logOut() {

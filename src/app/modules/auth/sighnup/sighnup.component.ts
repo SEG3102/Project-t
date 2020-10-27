@@ -1,6 +1,5 @@
 import { UtilsService } from './../../../core/services/utils.service';
 import { Router } from '@angular/router';
-import { AngularFireAuth } from '@angular/fire/auth';
 import {
   FormBuilder,
   FormControl,
@@ -33,7 +32,17 @@ export class SighnupComponent implements OnInit {
 
   createUser() {
     const { email, password, name, lastName } = this.registerForm.value;
-    this.utils.createUser(email, password, name, lastName);
-    this.router.navigate['login'];
+    this.utils.createUser(email, password).then((result) => {
+      this.utils.setUserDoc('Users', result.user.uid, {
+        name: name,
+        lastName: lastName,
+        roles: {
+          staff: true,
+          nurse: false,
+          doctor: false,
+        },
+      });
+    });
+    this.router.navigate(['login']);
   }
 }

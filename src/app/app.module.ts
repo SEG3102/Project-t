@@ -20,6 +20,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
+import { RegisterPatientComponent } from './core/modules/registerPatient/register-patient/register-patient.component';
+import { MedicalPrescriptionComponent } from './core/modules/medicalPrescribtion/medical-prescription/medical-prescription.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { MatIconModule } from '@angular/material/icon';
     HomeComponent,
     Page404Component,
     HeaderComponent,
+    RegisterPatientComponent,
+    MedicalPrescriptionComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -48,6 +52,13 @@ import { MatIconModule } from '@angular/material/icon';
     MatIconModule,
   ],
   providers: [],
-  bootstrap: [AppComponent, LoginComponent, SighnupComponent, HeaderComponent],
+  bootstrap: [
+    AppComponent,
+    LoginComponent,
+    SighnupComponent,
+    HeaderComponent,
+    MedicalPrescriptionComponent,
+    RegisterPatientComponent,
+  ],
 })
 export class AppModule {}
