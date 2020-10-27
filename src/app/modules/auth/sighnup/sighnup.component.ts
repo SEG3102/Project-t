@@ -16,11 +16,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SighnupComponent implements OnInit {
   registerForm: FormGroup;
-  constructor (
+  constructor(
     private fb: FormBuilder,
     private utils: UtilsService,
-    private router: Router,
-  ) { }
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.registerForm = this.fb.group({
@@ -33,10 +33,7 @@ export class SighnupComponent implements OnInit {
 
   createUser() {
     const { email, password, name, lastName } = this.registerForm.value;
-    console.log(email);
-    this.utils.createUser(email, password).then(user => {
-      // this.utils.setUserDoc("USERS", )
-      this.router.navigate[''];
-    })
+    this.utils.createUser(email, password, name, lastName);
+    this.router.navigate['login'];
   }
 }

@@ -1,15 +1,10 @@
-import {
-  Injectable,
-  ɵNOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR,
-} from '@angular/core';
+import { Router } from '@angular/router';
+import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
-import { auth } from 'firebase/app';
 import {
   AngularFirestore,
   AngularFirestoreDocument,
 } from '@angular/fire/firestore';
-import { AngularFireStorage } from '@angular/fire/storage';
-import { firestore } from 'firebase/app';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -23,21 +18,29 @@ export class UtilsService {
   constructor(
     public afAuth: AngularFireAuth,
     private _afs: AngularFirestore,
-    private _storage: AngularFireStorage
-  ) { }
-  
+    private router: Router
+  ) {}
+
   ngOnInit(): void {
-    this.afAuth.authState.subscribe(authState => {
-     
-   }) 
+  }
+
+  getAuthState() {
+    return this.afAuth.authState;
   }
 
   loginEmail(email, pwd) {
     return this.afAuth.signInWithEmailAndPassword(email, pwd);
   }
 
-  createUser(email, pwd) {
-    return this.afAuth.createUserWithEmailAndPassword(email, pwd);
+  createUser(email, pwd, name, lastName) {
+    this.afAuth.createUserWithEmailAndPassword(email, pwd);
+    this.loginEmail(email, pwd).then(this.router.navigate['']);
+    this.getAuthState().subscribe((s) => {
+      this.setUserDoc('USERS', s.uid, {
+        name: name,
+        lastName: lastName,
+      });
+    });
   }
 
   logOut() {
@@ -62,7 +65,7 @@ export class UtilsService {
 
   setUserDoc(coll, docId, data) {
     const timestamp = this.timestamp;
-    var docRef = this._afs.collection(this.getCollUrls(coll)).doc(docId);
+    const docRef = this._afs.collection(this.getCollUrls(coll)).doc(docId);
     return docRef
       .set({
         ...data,
@@ -75,7 +78,7 @@ export class UtilsService {
       });
   }
 
-  setDoc(coll: string, data: any, authorID: any) {
+  setDoc(coll: string, data: any) {
     let docId;
     const id = this._afs.createId();
     const item = { id, name };
@@ -88,12 +91,36 @@ export class UtilsService {
       .set({
         ...data,
         _id: id,
-        author: authorID,
         updatedAt: timestamp,
         createdAt: timestamp,
       })
       .then((res) => {
         return id;
       });
+  }
+  updateDoc(coll, docId, data) {
+    const timestamp = this.timestamp;
+    var docRef = this._afs.collection(this.getCollUrls(coll)).doc(docId);
+    return docRef
+      .update({
+        ...data,
+        updatedAt: timestamp,
+      })
+      .then((res) => {
+        return true;
+      });
+  }
+
+  getDoc(coll: string, docId: string) {
+    return this._afs
+      .collection(this.getCollUrls(coll))
+      .doc(docId)
+      .valueChanges();
+  }
+  deleteDoc(coll: string, docId: string) {
+    var docRef = this._afs.collection(this.getCollUrls(coll)).doc(docId);
+    return docRef.delete().then((res) => {
+      return true;
+    });
   }
 }
