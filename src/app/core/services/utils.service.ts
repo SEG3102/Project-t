@@ -18,7 +18,6 @@ export class UtilsService {
   constructor(
     public afAuth: AngularFireAuth,
     private _afs: AngularFirestore,
-    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -110,6 +109,7 @@ export class UtilsService {
       .doc(docId)
       .valueChanges();
   }
+
   deleteDoc(coll: string, docId: string) {
     var docRef = this._afs.collection(this.getCollUrls(coll)).doc(docId);
     return docRef.delete().then((res) => {

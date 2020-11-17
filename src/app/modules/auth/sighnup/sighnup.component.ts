@@ -40,6 +40,7 @@ export class SighnupComponent implements OnInit {
           staff: true,
           nurse: false,
           doctor: false,
+          admin: false
         },
       });
     });

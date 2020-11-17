@@ -27,7 +27,7 @@ export class DoctorGuard implements CanActivate {
       map((user) => (user && user.roles.doctor ? true : false)),
       tap((isDoctor) => {
         if (!isDoctor) {
-          console.error('Access denied - Registered Nurse only');
+          console.error('Access denied - Doctors only');
         }
       })
     );
