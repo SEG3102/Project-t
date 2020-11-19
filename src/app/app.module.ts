@@ -20,8 +20,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
-import { RegisterPatientComponent } from './core/modules/registerPatient/register-patient/register-patient.component';
+import { RegisterPatientComponent } from './core/modules/registerPatient/register-patient.component';
 import { MedicalPrescriptionComponent } from './core/modules/medicalPrescribtion/medical-prescription/medical-prescription.component';
+import { AdminComponent } from './core/modules/admin/admin.component';
+import { MatTableModule } from '@angular/material/table';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,7 @@ import { MedicalPrescriptionComponent } from './core/modules/medicalPrescribtion
     HeaderComponent,
     RegisterPatientComponent,
     MedicalPrescriptionComponent,
+    AdminComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -50,6 +54,8 @@ import { MedicalPrescriptionComponent } from './core/modules/medicalPrescribtion
     MatToolbarModule,
     MatTooltipModule,
     MatIconModule,
+    MatTableModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [

@@ -1,11 +1,11 @@
-import { Router } from '@angular/router';
+import { GetAllCollectonsService } from './storage/getAllCollections/get-all-collectons-service.service';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import {
   AngularFirestore,
-  AngularFirestoreDocument,
 } from '@angular/fire/firestore';
-import { Subject } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
+import { User } from './auth/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -14,11 +14,14 @@ export class UtilsService {
   configData;
   private userRoleSource = new Subject<string>();
   userRole$ = this.userRoleSource.asObservable();
+  header = new Subject<string>();
+  header$ = this.userRoleSource.asObservable();
+  users$: Observable<User[]>;
 
-  constructor(
-    public afAuth: AngularFireAuth,
-    private _afs: AngularFirestore,
-  ) {}
+
+  constructor (public afAuth: AngularFireAuth, private _afs: AngularFirestore, private getCollection: GetAllCollectonsService) {
+    this.users$ = this.getCollection.getAllCollectionsItems(this.getCollUrls("USERS"));
+  }
 
   ngOnInit(): void {
   }

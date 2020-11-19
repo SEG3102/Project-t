@@ -1,8 +1,10 @@
+import { AdminComponent } from './core/modules/admin/admin.component';
+import { AdminGuard } from './core/gaurds/admin/admin.guard';
 import { Page404Component } from './core/modules/page404/page404.component';
 import { DoctorGuard } from './core/gaurds/doctor/doctor.guard';
 import { ChargeNurseGuard } from './core/gaurds/chargeNurse/charge-nurse.guard';
 import { MedicalPrescriptionComponent } from './core/modules/medicalPrescribtion/medical-prescription/medical-prescription.component';
-import { RegisterPatientComponent } from './core/modules/registerPatient/register-patient/register-patient.component';
+import { RegisterPatientComponent } from './core/modules/registerPatient/register-patient.component';
 import {
   AngularFireAuthGuard,
   redirectUnauthorizedTo,
@@ -22,6 +24,11 @@ const routes: Routes = [
   {
     path: 'signup',
     component: SighnupComponent,
+  },
+  {
+    path: 'admin',
+    component: AdminComponent,
+    canActivate: [AdminGuard],
   },
   {
     path: 'registerPatient',
