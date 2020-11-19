@@ -1,4 +1,3 @@
-import { AuthService } from './../../services/auth/auth.service';
 import { Injectable } from '@angular/core';
 import {
   CanActivate,
@@ -7,13 +6,15 @@ import {
   UrlTree,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { tap, map, take } from 'rxjs/operators';
+import { map, take, tap } from 'rxjs/operators';
+import { AuthService } from './../../services/auth/auth.service'
 
 @Injectable({
   providedIn: 'root',
 })
-export class DoctorGuard implements CanActivate {
-  constructor(private auth: AuthService) {}
+export class AdminGuard implements CanActivate {
+  constructor( private auth: AuthService){}
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -24,10 +25,10 @@ export class DoctorGuard implements CanActivate {
     | UrlTree {
     return this.auth.userSettings$.pipe(
       take(1),
-      map((user) => (user && user.roles.doctor ? true : false)),
+      map((user) => (user && user.roles.admin ? true : false)),
       tap((isDoctor) => {
         if (!isDoctor) {
-          console.error('Access denied - Doctors only');
+          console.error('Access denied - Admins only');
         }
       })
     );

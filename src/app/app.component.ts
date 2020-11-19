@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { UtilsService } from './core/services/utils.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'project-t';
+  header: string
+  constructor ( private utils: UtilsService) {
+    
+  }
+  OnInit() {
+    this.utils.header$.subscribe(data => {
+      this.header = data
+    })
+  }
 }

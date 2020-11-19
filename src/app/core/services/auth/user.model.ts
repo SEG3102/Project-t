@@ -2,6 +2,7 @@ export interface Roles {
     staff?: boolean;
     nurse?: boolean;
     doctor?: boolean;
+    admin?: boolean;
 }
  
 export interface User {
