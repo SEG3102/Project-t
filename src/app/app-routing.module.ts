@@ -14,6 +14,7 @@ import { LoginComponent } from './modules/auth/login/login.component';
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { SighnupComponent } from './modules/auth/sighnup/sighnup.component';
+
 const redirectLoggedInToLogin = () => redirectUnauthorizedTo(['login']);
 
 const routes: Routes = [
