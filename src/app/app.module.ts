@@ -26,6 +26,7 @@ import { AdminComponent } from './core/modules/admin/admin.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+import { AdmitPatientComponent } from './core/modules/admit-patient/admit-patient.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { MatSelectModule } from '@angular/material/select';
     RegisterPatientComponent,
     MedicalPrescriptionComponent,
     AdminComponent,
+    AdmitPatientComponent,
   ],
   imports: [
     ReactiveFormsModule,

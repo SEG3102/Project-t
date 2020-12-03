@@ -1,3 +1,4 @@
+import { AdmitPatientComponent } from './core/modules/admit-patient/admit-patient.component';
 import { AdminComponent } from './core/modules/admin/admin.component';
 import { AdminGuard } from './core/gaurds/admin/admin.guard';
 import { Page404Component } from './core/modules/page404/page404.component';
@@ -34,6 +35,12 @@ const routes: Routes = [
   {
     path: 'registerPatient',
     component: RegisterPatientComponent,
+    canActivate: [ChargeNurseGuard],
+    data: { authGuardPipe: redirectLoggedInToLogin },
+  },
+  {
+    path: 'admitPatient',
+    component: AdmitPatientComponent,
     canActivate: [ChargeNurseGuard],
     data: { authGuardPipe: redirectLoggedInToLogin },
   },

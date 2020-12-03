@@ -9,11 +9,11 @@ import {
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-register-patient',
-  templateUrl: './register-patient.component.html',
-  styleUrls: ['./register-patient.component.css'],
+  selector: 'app-admit-patient',
+  templateUrl: './admit-patient.component.html',
+  styleUrls: ['./admit-patient.component.css'],
 })
-export class RegisterPatientComponent implements OnInit {
+export class AdmitPatientComponent implements OnInit {
   registerPatient: FormGroup;
   departments = [
     { value: 'd1', viewValue: 'Department 1' },
@@ -21,6 +21,12 @@ export class RegisterPatientComponent implements OnInit {
     { value: 'd3', viewValue: 'Department 3' },
   ];
   selectedDepartment = 'Department 1';
+
+  updateRoleForm: FormGroup;
+  patients;
+  columnsToDisplay = ['name', 'lastName'];
+  expandedElement;
+
   constructor(private fb: FormBuilder, private utils: UtilsService) {}
 
   ngOnInit(): void {
@@ -31,21 +37,35 @@ export class RegisterPatientComponent implements OnInit {
       lastName: new FormControl('', Validators.required),
       doctor: new FormControl('', Validators.required),
       department: new FormControl('Department 1'),
-      note: new FormControl('Patients Notes')
+      note: new FormControl('Patients Notes'),
+    });
+    this.updateRoleForm = this.fb.group({
+      email: new FormControl('', [Validators.required, Validators.email]),
+    });
+    this.utils.registeredPatients$.subscribe((data) => {
+      this.patients = data;
     });
   }
 
   admitPatient() {
-    const { email, phone, name, lastName, doctor, note } = this.registerPatient.value;
+    // const {
+    //   email,
+    //   phone,
+    //   name,
+    //   lastName,
+    //   doctor,
+    //   note,
+    // } = this.registerPatient.value;
 
-    this.utils.setDoc('REGISTER', {
-      name: name,
-      lastName: lastName,
-      email: email,
-      phone: phone,
-      familyDoctor: doctor,
-      department: this.selectedDepartment,
-      note: note
-    });
+    // this.utils.setDoc('ADMISSION', {
+    //   name: name,
+    //   lastName: lastName,
+    //   email: email,
+    //   phone: phone,
+    //   familyDoctor: doctor,
+    //   department: this.selectedDepartment,
+    //   note: note,
+    // });
+    console.log(this.patients)
   }
 }
