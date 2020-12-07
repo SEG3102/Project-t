@@ -25,6 +25,10 @@ import { MedicalPrescriptionComponent } from './core/modules/medicalPrescribtion
 import { AdminComponent } from './core/modules/admin/admin.component';
 import { MatTableModule } from '@angular/material/table';
 import {MatCheckboxModule} from '@angular/material/checkbox';
+import { UpdatePatientComponent } from './core/modules/update-patient/update-patient.component';
+import { DischargePatientComponent } from './core/modules/discharge-patient/discharge-patient.component';
+import { PrescribeMedicationComponent } from './core/modules/prescribe-medication/prescribe-medication.component';
+import { ConsultPatientComponent } from './core/modules/consult-patient/consult-patient.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +41,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     RegisterPatientComponent,
     MedicalPrescriptionComponent,
     AdminComponent,
+    UpdatePatientComponent,
+    DischargePatientComponent,
+    PrescribeMedicationComponent,
+    ConsultPatientComponent,
   ],
   imports: [
     ReactiveFormsModule,
