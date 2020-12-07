@@ -26,6 +26,8 @@ import { AdminComponent } from './core/modules/admin/admin.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AdmitPatientComponent } from './core/modules/admit-patient/admit-patient.component';
 
 @NgModule({
@@ -43,8 +45,10 @@ import { AdmitPatientComponent } from './core/modules/admit-patient/admit-patien
   ],
   imports: [
     ReactiveFormsModule,
+    MatSlideToggleModule,
     BrowserModule,
     AppRoutingModule,
+    MatSliderModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,

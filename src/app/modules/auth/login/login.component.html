@@ -1,4 +1,6 @@
 <mat-card>
+  <mat-card-title>Smart Manager - PMS</mat-card-title>
+    <mat-card-subtitle>Login or Register a new account below</mat-card-subtitle>
     <img mat-card-image src="../../../../assets/umbrella-logo.png">
     <form class="form" [formGroup]="loginForm">
         <mat-form-field class="form-control">
@@ -7,10 +9,11 @@
         </mat-form-field>
         <mat-form-field class="form-control">
             <mat-label>Your password</mat-label>
-            <input matInput formControlName="password" type="text" />
+            <input matInput formControlName="password" type="password" />
         </mat-form-field>
+        <div id="error"></div>
         <div class="form-footer">
-            <button mat-button (click)="onLogin()">Login</button>
+            <button mat-stroked-button (click)="onLogin()">Login</button>
             <a routerLink="/signup">Register</a>
         </div>
     </form>

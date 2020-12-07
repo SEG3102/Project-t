@@ -1,44 +1,66 @@
 <mat-card>
-    <form class="form" [formGroup]="registerPatient">
+  <mat-card-title>Admit Patient to Division</mat-card-title>
+    <mat-card-subtitle>Must REQUEST admission if division isn't your own</mat-card-subtitle>
+    <form class="form" [formGroup]="admitPatient">
+      <mat-form-field appearance="fill" class='form-control'>
+        <mat-label>PatientID</mat-label>
+        <mat-select formControlName="patients">
+            <mat-option *ngFor="let patient of patients" [(value)]="selectedDepartment">
+                {{patient.viewValue}}
+            </mat-option>
+        </mat-select>
+        </mat-form-field>
+        <section>
+          <mat-slide-toggle [(ngModel)]="checked" class="form-control" (change)="changed()">Request Patient Admission: {{checked}}</mat-slide-toggle>
+        </section>
         <mat-form-field class="form-control">
-            <mat-label>Email</mat-label>
-            <input matInput formControlName="email" type="text" />
+            <mat-label>Local Doctor</mat-label>
+            <input matInput formControlName="localDoctor" type="text" />
         </mat-form-field>
         <mat-form-field class="form-control">
-            <mat-label>Phone Number</mat-label>
-            <input matInput formControlName="phone" type="text" />
+          <mat-label>(Optional) Private Insurance Number</mat-label>
+          <input matInput formControlName="PIN" type="text" />
+      </mat-form-field>
+      <div *ngIf="!checked">
+        <mat-form-field class="form-control">
+            <mat-label>Room Number</mat-label>
+            <input matInput formControlName="room" type="text" />
         </mat-form-field>
         <mat-form-field class="form-control">
-            <mat-label>Name</mat-label>
-            <input matInput formControlName="name" type="text" />
+            <mat-label>Bed Number</mat-label>
+            <input matInput formControlName="bed" type="text" />
         </mat-form-field>
-        <mat-form-field class="form-control">
-            <mat-label>Last name</mat-label>
-            <input matInput formControlName="lastName" type="text" />
-        </mat-form-field>
-        <mat-form-field class="form-control">
-            <mat-label>Family Doctor</mat-label>
-            <input matInput formControlName="doctor" type="text" />
-        </mat-form-field>
+      </div>
+      <div *ngIf="checked">
         <mat-form-field appearance="fill" class='form-control'>
-            <mat-label>Admission department</mat-label>
-            <mat-select formControlName="department">
+            <mat-label>Division (if requesting admission)</mat-label>
+            <mat-select formControlName="division">
                 <mat-option *ngFor="let department of departments" [(value)]="selectedDepartment">
                     {{department.viewValue}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
+        <div class="priority">
+          <mat-label>Priority Assesment (1 to 10)</mat-label>
+        </div>
+        <mat-slider
+          thumbLabel
+          tickInterval="1"
+          min="1"
+          max="10"></mat-slider>
+      </div>
         <mat-form-field appearance="fill" class='form-control'>
-            <mat-label>Note</mat-label>
+            <mat-label>Notes/Rationale for Request</mat-label>
             <textarea matInput formControlName="note" style="line-height: 40px !important"></textarea>
         </mat-form-field>
         <div class="form-footer">
-            <button mat-button (click)="admitPatient()">Register Patient</button>
+            <button mat-stroked-button (click)="admitPatient()">Admit Patient/Request Admission</button>
+            <button mat-stroked-button (click)="cancel()">Cancel</button>
         </div>
     </form>
 </mat-card>
 
-
+<!--
 <h2>Change Users Roles</h2>
 <table mat-table [dataSource]="patients" multiTemplateDataRows class="mat-elevation-z8">
     <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
@@ -58,16 +80,18 @@
                 </div>
 
                 <div>
-                    <!-- <button mat-button (click)="admitPatient(element)">Update User's Roles</button> -->
+                     <button mat-button (click)="admitPatient(element)">Update User's Roles</button>
                 </div>
 
-            </div>
-        </td>
-    </ng-container>
+                </div>
+            </td>
+        </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-    <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="employee-element-row" [class.employee-expanded-row]="expandedElement === element" (click)="expandedElement = expandedElement === element ? null : element">
-    </tr>
-    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="employee-detail-row"></tr>
-</table>
-<button mat-button (click)="admitPatient()">Update User's Roles</button>
+        <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+        <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="employee-element-row" [class.employee-expanded-row]="expandedElement === element" (click)="expandedElement = expandedElement === element ? null : element">
+        </tr>
+        <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="employee-detail-row"></tr>
+    </table>
+    <button mat-button (click)="admitPatient()">Update User's Roles</button>
+  -->
+

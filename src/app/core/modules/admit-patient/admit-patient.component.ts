@@ -1,5 +1,6 @@
 import { UtilsService } from './../../../core/services/utils.service';
 import { Router } from '@angular/router';
+import {MatRadioModule} from '@angular/material/radio';
 import {
   FormBuilder,
   FormControl,
@@ -14,6 +15,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admit-patient.component.css'],
 })
 export class AdmitPatientComponent implements OnInit {
+  checked = false;
+
+  changed(){
+    //console.log(this.checked)
+    if (this.checked == true) {
+      this.checked = false;
+    }
+    else {
+      this.checked = true;
+    }
+  }
+
   registerPatient: FormGroup;
   departments = [
     { value: 'd1', viewValue: 'Department 1' },
@@ -27,15 +40,18 @@ export class AdmitPatientComponent implements OnInit {
   columnsToDisplay = ['name', 'lastName'];
   expandedElement;
 
+
+
+
+
   constructor(private fb: FormBuilder, private utils: UtilsService) {}
 
   ngOnInit(): void {
     this.registerPatient = this.fb.group({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      phone: new FormControl('', [Validators.required, Validators.min(7)]),
-      name: new FormControl('', Validators.required),
-      lastName: new FormControl('', Validators.required),
-      doctor: new FormControl('', Validators.required),
+      localDoctor: new FormControl('', Validators.required),
+      room: new FormControl('', Validators.required),
+      bed: new FormControl('', Validators.required),
+      PIN: new FormControl('PIN'),
       department: new FormControl('Department 1'),
       note: new FormControl('Patients Notes'),
     });
@@ -67,5 +83,9 @@ export class AdmitPatientComponent implements OnInit {
     //   note: note,
     // });
     console.log(this.patients)
+  }
+
+  cancel() {
+
   }
 }

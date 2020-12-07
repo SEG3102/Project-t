@@ -5,6 +5,33 @@
     height: 100vh;
 }
 
+::ng-deep .mat-card{
+  border: 3px solid black;
+}
+
+::ng-deep .mat-card-title{
+  text-align: center;
+}
+
+::ng-deep .mat-card-subtitle{
+  text-align: center;
+}
+
+::ng-deep .mat-focused .mat-form-field-label {
+  /*change color of label*/
+  color: rgba(35, 219, 179, 0.76) !important;
+ }
+
+ ::ng-deep.mat-form-field-underline {
+  /*change color of underline*/
+  background-color: rgb(14, 151, 122) !important;
+}
+
+::ng-deep.mat-form-field-ripple {
+ /*change color of underline when focused*/
+ background-color:  rgb(14, 151, 122) !important;;
+}
+
 .form {
     width: 20rem;
 }
@@ -18,3 +45,4 @@
     justify-content: space-between;
     align-items: center;
 }
+
