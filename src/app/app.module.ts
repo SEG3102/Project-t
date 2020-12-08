@@ -26,7 +26,6 @@ import { AdminComponent } from './core/modules/admin/admin.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { UpdatePatientComponent } from './core/modules/updatePatient/update-patient.component';
-import { DischargePatientComponent } from './core/modules/discharge-patient/discharge-patient.component';
 import { ConsultPatientComponent } from './core/modules/consult-patient/consult-patient.component';
 
 @NgModule({
@@ -41,7 +40,6 @@ import { ConsultPatientComponent } from './core/modules/consult-patient/consult-
     MedicalPrescriptionComponent,
     AdminComponent,
     UpdatePatientComponent,
-    DischargePatientComponent,
     ConsultPatientComponent,
   ],
   imports: [
