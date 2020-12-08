@@ -12,4 +12,12 @@ export class DivisionInfoComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  divisionInfo() {
+
+  }
+
+  cancel() {
+
+  }
+
 }
