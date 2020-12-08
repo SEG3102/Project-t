@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { UtilsService } from '../../services/utils.service';
 
 @Component({
   selector: 'app-discharge-patient',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./discharge-patient.component.css']
 })
 export class DischargePatientComponent implements OnInit {
-
-  constructor() { }
+  dischargePatient: FormGroup;
+  constructor(private utils: UtilsService) { }
 
   ngOnInit(): void {
   }
 
+  discharge() {
+    this.utils.deleteDoc('PATIENT', '');
+  }
 }
