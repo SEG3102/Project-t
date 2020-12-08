@@ -24,7 +24,8 @@ import { RegisterPatientComponent } from './core/modules/registerPatient/registe
 import { MedicalPrescriptionComponent } from './core/modules/medicalPrescribtion/medical-prescription/medical-prescription.component';
 import { AdminComponent } from './core/modules/admin/admin.component';
 import { MatTableModule } from '@angular/material/table';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
     MatIconModule,
     MatTableModule,
     MatCheckboxModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [

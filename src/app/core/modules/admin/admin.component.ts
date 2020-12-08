@@ -28,7 +28,7 @@ export class AdminComponent implements OnInit {
   updateRoleForm: FormGroup;
   users;
   columnsToDisplay = ['name', 'lastName' ];
-  roles = ['admin', 'nurse', 'doctor', 'staff']
+  roles = ['admin', 'nurse', 'doctor', 'staff'];
   expandedElement;
   constructor(private fb: FormBuilder, private utils: UtilsService) {}
 
@@ -42,12 +42,12 @@ export class AdminComponent implements OnInit {
   }
 
   updateRoles(user) {
-    let id = user.id;
+    let id = user.author;
     let data = {
       ...user,
       updatedAt: this.utils.timestamp,
     }
-    this.utils.setUserDoc("USERS", id , data);
+    this.utils.updateDoc("USERS", id , data);
   }
 
 }

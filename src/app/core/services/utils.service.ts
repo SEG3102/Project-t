@@ -52,8 +52,8 @@ export class UtilsService {
     if (coll == 'USERS') {
       _coll = 'Users_settings';
     }
-    if (coll == 'ROLES') {
-      _coll = 'User_roles';
+    if (coll == 'PATIENT') {
+      _coll = 'Patient_admission';
     }
     return _coll;
   }
