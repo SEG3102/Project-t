@@ -24,8 +24,8 @@ import { RegisterPatientComponent } from './core/modules/registerPatient/registe
 import { MedicalPrescriptionComponent } from './core/modules/medicalPrescribtion/medical-prescription/medical-prescription.component';
 import { AdminComponent } from './core/modules/admin/admin.component';
 import { MatTableModule } from '@angular/material/table';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import { UpdatePatientComponent } from './core/modules/update-patient/update-patient.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { UpdatePatientComponent } from './core/modules/updatePatient/update-patient.component';
 import { DischargePatientComponent } from './core/modules/discharge-patient/discharge-patient.component';
 import { PrescribeMedicationComponent } from './core/modules/prescribe-medication/prescribe-medication.component';
 import { ConsultPatientComponent } from './core/modules/consult-patient/consult-patient.component';
@@ -75,4 +75,4 @@ import { ConsultPatientComponent } from './core/modules/consult-patient/consult-
     RegisterPatientComponent,
   ],
 })
-export class AppModule {}
+export class AppModule { }
