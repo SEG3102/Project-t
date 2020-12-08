@@ -27,7 +27,6 @@ import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { UpdatePatientComponent } from './core/modules/updatePatient/update-patient.component';
 import { DischargePatientComponent } from './core/modules/discharge-patient/discharge-patient.component';
-import { PrescribeMedicationComponent } from './core/modules/prescribe-medication/prescribe-medication.component';
 import { ConsultPatientComponent } from './core/modules/consult-patient/consult-patient.component';
 
 @NgModule({
@@ -43,7 +42,6 @@ import { ConsultPatientComponent } from './core/modules/consult-patient/consult-
     AdminComponent,
     UpdatePatientComponent,
     DischargePatientComponent,
-    PrescribeMedicationComponent,
     ConsultPatientComponent,
   ],
   imports: [
