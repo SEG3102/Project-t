@@ -18,7 +18,6 @@ export class AdmitPatientComponent implements OnInit {
   checked = false;
 
   changed(){
-    //console.log(this.checked)
     if (this.checked == true) {
       this.checked = false;
     }
@@ -27,7 +26,7 @@ export class AdmitPatientComponent implements OnInit {
     }
   }
 
-  registerPatient: FormGroup;
+  admitPatient: FormGroup;
   departments = [
     { value: 'd1', viewValue: 'Department 1' },
     { value: 'd2', viewValue: 'Department 2' },
@@ -47,7 +46,7 @@ export class AdmitPatientComponent implements OnInit {
   constructor(private fb: FormBuilder, private utils: UtilsService) {}
 
   ngOnInit(): void {
-    this.registerPatient = this.fb.group({
+    this.admitPatient = this.fb.group({
       localDoctor: new FormControl('', Validators.required),
       room: new FormControl('', Validators.required),
       bed: new FormControl('', Validators.required),
@@ -63,7 +62,7 @@ export class AdmitPatientComponent implements OnInit {
     });
   }
 
-  admitPatient() {
+  admitPatientToDepartment() {
     // const {
     //   email,
     //   phone,
@@ -82,6 +81,8 @@ export class AdmitPatientComponent implements OnInit {
     //   department: this.selectedDepartment,
     //   note: note,
     // });
+
+    console.log(this.patients);
   }
 
   cancel() {
