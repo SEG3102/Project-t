@@ -1,9 +1,7 @@
-import { AdmitPatientComponent } from './core/modules/admit-patient/admit-patient.component';
 import { AdminComponent } from './core/modules/admin/admin.component';
 import { AdminGuard } from './core/gaurds/admin/admin.guard';
 import { Page404Component } from './core/modules/page404/page404.component';
 import { DoctorGuard } from './core/gaurds/doctor/doctor.guard';
-import { DivisionInfoComponent } from './core/modules/division-info/division-info.component';
 import { ChargeNurseGuard } from './core/gaurds/chargeNurse/charge-nurse.guard';
 import { MedicalPrescriptionComponent } from './core/modules/medicalPrescribtion/medical-prescription/medical-prescription.component';
 import { RegisterPatientComponent } from './core/modules/registerPatient/register-patient.component';
@@ -37,18 +35,6 @@ const routes: Routes = [
   {
     path: 'registerPatient',
     component: RegisterPatientComponent,
-    canActivate: [ChargeNurseGuard],
-    data: { authGuardPipe: redirectLoggedInToLogin },
-  },
-  {
-    path: 'admitPatient',
-    component: AdmitPatientComponent,
-    canActivate: [ChargeNurseGuard],
-    data: { authGuardPipe: redirectLoggedInToLogin },
-  },
-  {
-    path: 'divisionInfo',
-    component: DivisionInfoComponent,
     canActivate: [ChargeNurseGuard],
     data: { authGuardPipe: redirectLoggedInToLogin },
   },
