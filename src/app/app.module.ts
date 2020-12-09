@@ -26,6 +26,10 @@ import { AdminComponent } from './core/modules/admin/admin.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { AdmitPatientComponent } from './core/modules/admit-patient/admit-patient.component';
+import { DivisionInfoComponent } from './core/modules/division-info/division-info.component';
 
 @NgModule({
   declarations: [
@@ -38,11 +42,15 @@ import { MatSelectModule } from '@angular/material/select';
     RegisterPatientComponent,
     MedicalPrescriptionComponent,
     AdminComponent,
+    AdmitPatientComponent,
+    DivisionInfoComponent,
   ],
   imports: [
     ReactiveFormsModule,
+    MatSlideToggleModule,
     BrowserModule,
     AppRoutingModule,
+    MatSliderModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,

@@ -16,11 +16,15 @@ export class UtilsService {
   userRole$ = this.userRoleSource.asObservable();
   header = new Subject<string>();
   header$ = this.userRoleSource.asObservable();
-  users$: Observable<User[]>;
+  users$: Observable<Object[]>;
+  admitedPatients$: Observable<Object[]>;
+  registeredPatients$: Observable<Object[]>;
 
 
   constructor (public afAuth: AngularFireAuth, private _afs: AngularFirestore, private getCollection: GetAllCollectonsService) {
     this.users$ = this.getCollection.getAllCollectionsItems(this.getCollUrls("USERS"));
+    this.admitedPatients$ = this.getCollection.getAllCollectionsItems(this.getCollUrls("ADMISSION"));
+    this.registeredPatients$ = this.getCollection.getAllCollectionsItems(this.getCollUrls("REGISTER"));
   }
 
   ngOnInit(): void {
@@ -52,7 +56,10 @@ export class UtilsService {
     if (coll == 'USERS') {
       _coll = 'Users_settings';
     }
-    if (coll == 'PATIENT') {
+    if (coll == 'REGISTER') {
+      _coll = 'Patient_registration';
+    }
+    if (coll == 'ADMISSION') {
       _coll = 'Patient_admission';
     }
     if (coll == 'REGISTER') {

@@ -12,3 +12,8 @@ export interface User {
   lastName?: string;
   roles?: Roles;
 }
+
+export interface Patient {
+  name: string;
+  lastNane: string;
+}

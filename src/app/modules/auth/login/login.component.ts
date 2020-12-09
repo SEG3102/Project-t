@@ -27,12 +27,13 @@ export class LoginComponent implements OnInit {
       password: new FormControl('', [Validators.required, Validators.min(6)]),
     });
   }
+
   onLogin() {
     const { email, password } = this.loginForm.value;
     this.utils
       .loginEmail(email, password)
       .then(() => {
-        this.router.navigate(['']);
+        this.router.navigate([''])
     console.log("nav")  });
   }
 }
