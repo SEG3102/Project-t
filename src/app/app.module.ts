@@ -25,11 +25,16 @@ import { MedicalPrescriptionComponent } from './core/modules/medicalPrescribtion
 import { AdminComponent } from './core/modules/admin/admin.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+<<<<<<< HEAD
 import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AdmitPatientComponent } from './core/modules/admit-patient/admit-patient.component';
 import { DivisionInfoComponent } from './core/modules/division-info/division-info.component';
+=======
+import { UpdatePatientComponent } from './core/modules/updatePatient/update-patient.component';
+import { ConsultPatientComponent } from './core/modules/consultPatient/consult-patient.component';
+>>>>>>> a394e79d1c9b79fd765580cf71cfcc9888e99794
 
 @NgModule({
   declarations: [
@@ -42,8 +47,13 @@ import { DivisionInfoComponent } from './core/modules/division-info/division-inf
     RegisterPatientComponent,
     MedicalPrescriptionComponent,
     AdminComponent,
+<<<<<<< HEAD
     AdmitPatientComponent,
     DivisionInfoComponent,
+=======
+    UpdatePatientComponent,
+    ConsultPatientComponent,
+>>>>>>> a394e79d1c9b79fd765580cf71cfcc9888e99794
   ],
   imports: [
     ReactiveFormsModule,
@@ -78,4 +88,4 @@ import { DivisionInfoComponent } from './core/modules/division-info/division-inf
     UpdatePatientComponent,
   ],
 })
-export class AppModule {}
+export class AppModule { }
