@@ -4,7 +4,7 @@
     <form class="form" [formGroup]="admitPatient">
         <mat-form-field appearance="fill" class='form-control'>
             <mat-label>PatientID</mat-label>
-            <mat-select formControlName="patients">
+            <mat-select formControlName="patient">
                 <mat-option *ngFor="let patient of patients" [(value)]="selectedDepartment">
                     {{patient.name}}
                 </mat-option>
@@ -35,7 +35,7 @@
         <div *ngIf="checked">
             <mat-form-field appearance="fill" class='form-control'>
                 <mat-label>Division (if requesting admission)</mat-label>
-                <mat-select formControlName="division">
+                <mat-select formControlName="department">
                     <mat-option *ngFor="let department of departments" [(value)]="selectedDepartment">
                         {{department.viewValue}}
                     </mat-option>

@@ -34,6 +34,7 @@ export class AdmitPatientComponent implements OnInit {
 
   ngOnInit(): void {
     this.admitPatient = this.fb.group({
+      patient: new FormControl('Department 1'),
       localDoctor: new FormControl('', Validators.required),
       room: new FormControl('', Validators.required),
       bed: new FormControl('', Validators.required),
