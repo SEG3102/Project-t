@@ -30,7 +30,11 @@ export class AdmitPatientComponent implements OnInit {
   columnsToDisplay = ['name', 'lastName'];
   expandedElement;
 
-  constructor(private fb: FormBuilder, private utils: UtilsService) {}
+  constructor(
+    private fb: FormBuilder,
+    private utils: UtilsService,
+    private router: Router
+    ) {}
 
   ngOnInit(): void {
     this.admitPatient = this.fb.group({
@@ -39,7 +43,7 @@ export class AdmitPatientComponent implements OnInit {
       room: new FormControl('', Validators.required),
       bed: new FormControl('', Validators.required),
       PIN: new FormControl('PIN'),
-      department: new FormControl('Department 1'),
+      department: new FormControl(this.selectedDepartment),
       note: new FormControl('Patients Notes'),
     });
     this.updateRoleForm = this.fb.group({
@@ -51,29 +55,22 @@ export class AdmitPatientComponent implements OnInit {
   }
 
   admitPatientToDepartment() {
-    // const {
-    //   email,
-    //   phone,
-    //   name,
-    //   lastName,
-    //   doctor,
-    //   note,
-    // } = this.registerPatient.value;
+    const { patient, localDoctor, room, bed, PIN, department, note } = this.admitPatient.value;
 
-    // this.utils.setDoc('ADMISSION', {
-    //   name: name,
-    //   lastName: lastName,
-    //   email: email,
-    //   phone: phone,
-    //   familyDoctor: doctor,
-    //   department: this.selectedDepartment,
-    //   note: note,
-    // });
+    this.utils.setDoc('ADMISSION', {
+      patient: patient,
+      localDoctor: localDoctor,
+      room: room,
+      bed: bed,
+      pin: PIN,
+      department: department,
+      note: note
+    });
 
     console.log(this.patients);
   }
 
   cancel() {
-
+    this.router.navigate([''])
   }
 }

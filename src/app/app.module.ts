@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { RegisterPatientComponent } from './core/modules/registerPatient/register-patient.component';
 import { MedicalPrescriptionComponent } from './core/modules/medicalPrescribtion/medical-prescription/medical-prescription.component';
@@ -30,6 +31,7 @@ import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { AdmitPatientComponent } from './core/modules/admit-patient/admit-patient.component';
 import { DivisionInfoComponent } from './core/modules/division-info/division-info.component';
+import { RequestListComponent } from './core/modules/request-list/request-list.component';
 
 @NgModule({
   declarations: [
@@ -44,11 +46,13 @@ import { DivisionInfoComponent } from './core/modules/division-info/division-inf
     AdminComponent,
     AdmitPatientComponent,
     DivisionInfoComponent,
+    RequestListComponent,
   ],
   imports: [
     ReactiveFormsModule,
     MatSlideToggleModule,
     BrowserModule,
+    MatExpansionModule,
     AppRoutingModule,
     MatSliderModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),

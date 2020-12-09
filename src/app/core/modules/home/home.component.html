@@ -1,1 +1,11 @@
-<button (click)="logOut()">LogOut</button>
+<mat-card>
+  <mat-card-title>Welcome Back, "Name"</mat-card-title>
+    <mat-card-subtitle>Please select an action to perform</mat-card-subtitle>
+        <div class="buttons">
+          <button class="button1" mat-stroked-button (click)="register()">REGISTER PATIENT</button>
+          <button class="button2" mat-stroked-button (click)="admit()">ADMIT PATIENT <br/> or <br/> REQUEST PATIENT ADMISSION</button>
+          <button class="button3" mat-stroked-button (click)="monitor()">MONITOR DIVSIONS</button>
+        </div>
+        <img mat-card-image src="../../../../assets/DataSample.png">
+</mat-card>
+

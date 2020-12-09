@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilsService } from './../../../core/services/utils.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-division-info',
@@ -7,7 +9,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DivisionInfoComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
   }
@@ -17,7 +21,7 @@ export class DivisionInfoComponent implements OnInit {
   }
 
   cancel() {
-
+  this.router.navigate([''])
   }
 
 }

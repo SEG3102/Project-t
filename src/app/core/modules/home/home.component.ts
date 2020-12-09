@@ -15,7 +15,15 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  logOut() {
-    this.utils.logOut().then(() => this.router.navigate(['login']));
+  register() {
+    this.router.navigate(['registerPatient'])
+  }
+
+  admit() {
+    this.router.navigate(['admitPatient'])
+  }
+
+  monitor() {
+    this.router.navigate(['divisionInfo'])
   }
 }
