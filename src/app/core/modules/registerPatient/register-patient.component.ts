@@ -15,37 +15,57 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterPatientComponent implements OnInit {
   registerPatient: FormGroup;
-  departments = [
-    { value: 'd1', viewValue: 'Department 1' },
-    { value: 'd2', viewValue: 'Department 2' },
-    { value: 'd3', viewValue: 'Department 3' },
+  genders = [
+    { value: 'm', viewValue: 'male' },
+    { value: 'f', viewValue: 'female' },
+    { value: 'h', viewValue: 'I am helicopter' },
   ];
-  selectedDepartment = 'Department 1';
+  maritalStatus = [
+    { value: 'm', viewValue: 'married' },
+    { value: 's', viewValue: 'single' },
+    { value: 'i', viewValue: 'It is complicated. I do not want to talk about it' }
+  ];
+  selectedGender = 'female';
+  selectedStatus = 'married';
   constructor(private fb: FormBuilder, private utils: UtilsService) {}
 
   ngOnInit(): void {
     this.registerPatient = this.fb.group({
-      email: new FormControl('', [Validators.required, Validators.email]),
       phone: new FormControl('', [Validators.required, Validators.min(7)]),
       name: new FormControl('', Validators.required),
+      dob: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      insurance: new FormControl('', Validators.required),
       lastName: new FormControl('', Validators.required),
       doctor: new FormControl('', Validators.required),
-      department: new FormControl('Department 1'),
-      note: new FormControl('Patients Notes')
+      gender: new FormControl('female'),
+      maritalStatus: new FormControl('married'),
+      nextOfKeen: new FormControl('', Validators.required),
     });
   }
 
-  admitPatient() {
-    const { email, phone, name, lastName, doctor, note } = this.registerPatient.value;
+  submitRegisterPatient() {
+    const {
+      phone,
+      name,
+      lastName,
+      doctor,
+      insurance,
+      nextOfKeen,
+      dob,
+    } = this.registerPatient.value;
 
     this.utils.setDoc('REGISTER', {
       name: name,
       lastName: lastName,
-      email: email,
+      insurance: insurance,
       phone: phone,
       familyDoctor: doctor,
-      department: this.selectedDepartment,
-      note: note
+      gender: this.selectedGender,
+      maritalStatus: this.selectedStatus,
+      dataOfBirth: dob,
+      nextOfKeen: nextOfKeen,
+
     });
   }
 }

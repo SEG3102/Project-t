@@ -62,6 +62,9 @@ export class UtilsService {
     if (coll == 'ADMISSION') {
       _coll = 'Patient_admission';
     }
+    if (coll == 'REGISTER') {
+      _coll = 'Patient_registration';
+    }
     return _coll;
   }
 
