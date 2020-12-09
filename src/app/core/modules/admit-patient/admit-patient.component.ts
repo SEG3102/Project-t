@@ -17,15 +17,6 @@ import { Component, OnInit } from '@angular/core';
 export class AdmitPatientComponent implements OnInit {
   checked = false;
 
-  changed(){
-    if (this.checked == true) {
-      this.checked = false;
-    }
-    else {
-      this.checked = true;
-    }
-  }
-
   admitPatient: FormGroup;
   departments = [
     { value: 'd1', viewValue: 'Department 1' },
@@ -38,10 +29,6 @@ export class AdmitPatientComponent implements OnInit {
   patients;
   columnsToDisplay = ['name', 'lastName'];
   expandedElement;
-
-
-
-
 
   constructor(private fb: FormBuilder, private utils: UtilsService) {}
 

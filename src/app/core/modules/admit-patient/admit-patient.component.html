@@ -10,10 +10,10 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
-        <!-- <section>
-            <mat-slide-toggle [(ngModel)]="checked" class="form-control" (change)="changed()">Request Patient Admission: {{checked}}
+        <div>
+            <mat-slide-toggle class="form-control" [checked]="checked" (change)="checked = $event.source.checked">Request Patient Admission: {{checked}}
             </mat-slide-toggle>
-        </section>
+        </div>
         <mat-form-field class="form-control">
             <mat-label>Local Doctor</mat-label>
             <input matInput formControlName="localDoctor" type="text" />
@@ -21,7 +21,7 @@
         <mat-form-field class="form-control">
             <mat-label>(Optional) Private Insurance Number</mat-label>
             <input matInput formControlName="PIN" type="text" />
-        </mat-form-field> -->
+        </mat-form-field>
         <div *ngIf="!checked">
             <mat-form-field class="form-control">
                 <mat-label>Room Number</mat-label>
