@@ -7,6 +7,7 @@ import { DivisionInfoComponent } from './core/modules/division-info/division-inf
 import { ChargeNurseGuard } from './core/gaurds/chargeNurse/charge-nurse.guard';
 import { MedicalPrescriptionComponent } from './core/modules/medicalPrescribtion/medical-prescription/medical-prescription.component';
 import { RegisterPatientComponent } from './core/modules/registerPatient/register-patient.component';
+import { UpdatePatientComponent } from "./core/modules/updatePatient/update-patient.component";
 import {
   AngularFireAuthGuard,
   redirectUnauthorizedTo,
@@ -67,10 +68,16 @@ const routes: Routes = [
     path: '**',
     component: Page404Component,
   },
+  {
+    path: 'updatePatient',
+    component: UpdatePatientComponent,
+    canActivate: [ChargeNurseGuard],
+    data: { authGuardPipe: redirectLoggedInToLogin },
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

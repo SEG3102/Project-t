@@ -75,6 +75,7 @@ import { DivisionInfoComponent } from './core/modules/division-info/division-inf
     HeaderComponent,
     MedicalPrescriptionComponent,
     RegisterPatientComponent,
+    UpdatePatientComponent,
   ],
 })
 export class AppModule {}
