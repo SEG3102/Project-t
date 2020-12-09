@@ -1,12 +1,8 @@
 <mat-card>
     <form class="form" [formGroup]="registerPatient">
         <mat-form-field class="form-control">
-            <mat-label>Email</mat-label>
-            <input matInput formControlName="email" type="text" />
-        </mat-form-field>
-        <mat-form-field class="form-control">
-            <mat-label>Phone Number</mat-label>
-            <input matInput formControlName="phone" type="text" />
+            <mat-label>Insurance number</mat-label>
+            <input matInput formControlName="insurance" type="text" />
         </mat-form-field>
         <mat-form-field class="form-control">
             <mat-label>Name</mat-label>
@@ -17,23 +13,43 @@
             <input matInput formControlName="lastName" type="text" />
         </mat-form-field>
         <mat-form-field class="form-control">
-            <mat-label>Family Doctor</mat-label>
+            <mat-label>Phone Number</mat-label>
+            <input matInput formControlName="phone" type="text" />
+        </mat-form-field>
+        <mat-form-field class="form-control">
+            <mat-label>DOB</mat-label>
+            <input matInput formControlName="dob" type="date" />
+        </mat-form-field>
+        <mat-form-field class="form-control">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address" type="text" />
+        </mat-form-field>
+        <mat-form-field class="form-control">
+            <mat-label>External Doctor</mat-label>
             <input matInput formControlName="doctor" type="text" />
         </mat-form-field>
         <mat-form-field appearance="fill" class='form-control'>
-            <mat-label>Admission department</mat-label>
-            <mat-select formControlName="department">
-                <mat-option *ngFor="let department of departments" [(value)]="selectedDepartment">
-                    {{department.viewValue}}
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender" [(ngModel)]="selectedGender">
+                <mat-option *ngFor="let g of genders" [(value)]="g.viewValue">
+                    {{g.viewValue}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
         <mat-form-field appearance="fill" class='form-control'>
-            <mat-label>Note</mat-label>
-            <textarea matInput formControlName="note" style="line-height: 40px !important"></textarea>
+            <mat-label>Marital Status</mat-label>
+            <mat-select formControlName="maritalStatus" [(ngModel)]="selectedStatus">
+                <mat-option *ngFor="let g of maritalStatus" [(value)]="g.viewValue">
+                    {{g.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field class="form-control">
+            <mat-label>Next Of Keen</mat-label>
+            <input matInput formControlName="nextOfKeen" type="text" />
         </mat-form-field>
         <div class="form-footer">
-            <button mat-button (click)="admitPatient()">Admit Patient</button>
+            <button mat-button (click)="submitRegisterPatient()">Register Patient</button>
         </div>
     </form>
 </mat-card>
