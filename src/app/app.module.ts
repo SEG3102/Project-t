@@ -69,6 +69,7 @@ import { ConsultPatientComponent } from './core/modules/consultPatient/consult-p
     HeaderComponent,
     MedicalPrescriptionComponent,
     RegisterPatientComponent,
+    UpdatePatientComponent,
   ],
 })
 export class AppModule { }
