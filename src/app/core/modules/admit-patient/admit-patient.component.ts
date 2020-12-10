@@ -66,8 +66,6 @@ export class AdmitPatientComponent implements OnInit {
       department: department,
       note: note
     });
-
-    console.log(this.patients);
   }
 
   cancel() {
