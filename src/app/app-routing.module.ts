@@ -6,7 +6,9 @@ import { ChargeNurseGuard } from './core/gaurds/chargeNurse/charge-nurse.guard';
 import { MedicalPrescriptionComponent } from './core/modules/medicalPrescribtion/medical-prescription/medical-prescription.component';
 import { RegisterPatientComponent } from './core/modules/registerPatient/register-patient.component';
 import { UpdatePatientComponent } from "./core/modules/updatePatient/update-patient.component";
-import { ConsultPatientComponent } from "./core/modules/consult-patient/consult-patient.component";
+import { ConsultPatientComponent } from "./core/modules/consultPatient/consult-patient.component";
+import { DivisionInfoComponent } from './core/modules/division-info/division-info.component';
+import { AdmitPatientComponent } from './core/modules/admit-patient/admit-patient.component';
 import {
   AngularFireAuthGuard,
   redirectUnauthorizedTo,
@@ -64,6 +66,18 @@ const routes: Routes = [
   {
     path: 'consultPatient',
     component: ConsultPatientComponent,
+    canActivate: [ChargeNurseGuard],
+    data: { authGuardPipe: redirectLoggedInToLogin },
+  },
+  {
+    path: 'admitPatient',
+    component: AdmitPatientComponent,
+    canActivate: [ChargeNurseGuard],
+    data: { authGuardPipe: redirectLoggedInToLogin },
+  },
+  {
+    path: 'divisionInfo',
+    component: DivisionInfoComponent,
     canActivate: [ChargeNurseGuard],
     data: { authGuardPipe: redirectLoggedInToLogin },
   },
