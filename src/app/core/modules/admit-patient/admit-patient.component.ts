@@ -17,17 +17,7 @@ import { Component, OnInit } from '@angular/core';
 export class AdmitPatientComponent implements OnInit {
   checked = false;
 
-  changed(){
-    //console.log(this.checked)
-    if (this.checked == true) {
-      this.checked = false;
-    }
-    else {
-      this.checked = true;
-    }
-  }
-
-  registerPatient: FormGroup;
+  admitPatient: FormGroup;
   departments = [
     { value: 'd1', viewValue: 'Department 1' },
     { value: 'd2', viewValue: 'Department 2' },
@@ -40,19 +30,20 @@ export class AdmitPatientComponent implements OnInit {
   columnsToDisplay = ['name', 'lastName'];
   expandedElement;
 
-
-
-
-
-  constructor(private fb: FormBuilder, private utils: UtilsService) {}
+  constructor(
+    private fb: FormBuilder,
+    private utils: UtilsService,
+    private router: Router
+    ) {}
 
   ngOnInit(): void {
-    this.registerPatient = this.fb.group({
+    this.admitPatient = this.fb.group({
+      patient: new FormControl('Department 1'),
       localDoctor: new FormControl('', Validators.required),
       room: new FormControl('', Validators.required),
       bed: new FormControl('', Validators.required),
       PIN: new FormControl('PIN'),
-      department: new FormControl('Department 1'),
+      department: new FormControl(this.selectedDepartment),
       note: new FormControl('Patients Notes'),
     });
     this.updateRoleForm = this.fb.group({
@@ -63,29 +54,21 @@ export class AdmitPatientComponent implements OnInit {
     });
   }
 
-  admitPatient() {
-    // const {
-    //   email,
-    //   phone,
-    //   name,
-    //   lastName,
-    //   doctor,
-    //   note,
-    // } = this.registerPatient.value;
+  admitPatientToDepartment() {
+    const { patient, localDoctor, room, bed, PIN, department, note } = this.admitPatient.value;
 
-    // this.utils.setDoc('ADMISSION', {
-    //   name: name,
-    //   lastName: lastName,
-    //   email: email,
-    //   phone: phone,
-    //   familyDoctor: doctor,
-    //   department: this.selectedDepartment,
-    //   note: note,
-    // });
-    console.log(this.patients)
+    this.utils.setDoc('ADMISSION', {
+      patient: patient,
+      localDoctor: localDoctor,
+      room: room,
+      bed: bed,
+      pin: PIN,
+      department: department,
+      note: note
+    });
   }
 
   cancel() {
-
+    this.router.navigate([''])
   }
 }
