@@ -21,7 +21,11 @@ export class RegisterPatientComponent implements OnInit {
     { value: 'd3', viewValue: 'Department 3' },
   ];
   selectedDepartment = 'Department 1';
-  constructor(private fb: FormBuilder, private utils: UtilsService) {}
+  constructor(
+    private fb: FormBuilder,
+    private utils: UtilsService,
+    private router: Router
+    ) {}
 
   ngOnInit(): void {
     this.registerPatient = this.fb.group({
@@ -38,14 +42,20 @@ export class RegisterPatientComponent implements OnInit {
   admitPatient() {
     const { email, phone, name, lastName, doctor, note } = this.registerPatient.value;
 
-    this.utils.setDoc('REGISTER', {
-      name: name,
-      lastName: lastName,
-      email: email,
-      phone: phone,
-      familyDoctor: doctor,
-      department: this.selectedDepartment,
-      note: note
-    });
+    if(this.registerPatient.status == "INVALID") {
+      alert("Please complete the form")
+    } else {
+      this.utils.setDoc('REGISTER', {
+        name: name,
+        lastName: lastName,
+        email: email,
+        phone: phone,
+        familyDoctor: doctor,
+        department: this.selectedDepartment,
+        note: note
+      });
+      alert("Sucessfully registered Patient!")
+      this.router.navigate([''])
+    }
   }
 }
