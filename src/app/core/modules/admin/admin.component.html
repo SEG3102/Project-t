@@ -1,5 +1,7 @@
-<h1>Admin Board</h1>
-<h2>Change Users Roles</h2>
+<div id='title-container'>
+    <mat-card-title>Admin Room</mat-card-title>
+    <mat-card-subtitle>Add or remove roles from users</mat-card-subtitle>
+</div>
 <table mat-table [dataSource]="users" multiTemplateDataRows class="mat-elevation-z8">
     <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
         <th mat-header-cell *matHeaderCellDef> {{column}} </th>

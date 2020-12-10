@@ -1,6 +1,29 @@
 <mat-toolbar color="none">
     <mat-toolbar-row>
         <mat-icon class="example-icon">{{ "umbrella" }}</mat-icon>
-        <span matTooltip="About us">{{ pageTitle }}</span><span class="example-spacer"></span>
+        <button mat-icon-button matTooltipShowDelay="400" matTooltip="Home" (click)="home()" color="grey" aria-label="home icon">
+          <mat-icon>home</mat-icon>
+        </button>
+        <button mat-icon-button matTooltipShowDelay="400" matTooltip="Search Patient" class="search-icon" color="grey" aria-label="search icon">
+          <mat-icon>search</mat-icon>
+        </button>
+        <span class="large-spacer"></span>
+        <div *ngIf="this.userSettings.name != null">
+        <mat-expansion-panel matTooltipPosition="left" matTooltipShowDelay="400" matTooltip="Account Settings">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              <mat-panel-description>
+                {{ this.userSettings.name }} {{ this.userSettings.lastName }}
+              </mat-panel-description>
+              <button mat-icon-button color="grey" aria-label="profile icon">
+                <mat-icon>account_circle</mat-icon>
+              </button>
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <button mat-button>Admission Requests</button>
+          <button mat-button color="warn" (click)="logOut()">Log Out</button>
+        </mat-expansion-panel>
+      </div>
+        <!-- <span matTooltip="About us">{{ pageTitle }}</span><span class="example-spacer"></span> -->
     </mat-toolbar-row>
 </mat-toolbar>

@@ -1,0 +1,75 @@
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+}
+
+.mat-card-image {
+  width: 80%;
+  height: 100%;
+  max-width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.button1 {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.button2 {
+  margin-top: 15px;
+  margin-left: 15px;
+  margin-right: 15px;
+  line-height: 17px;
+  position: relative;
+  top: -15px;
+  height: 60px;
+}
+
+.button3 {
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.button4 {
+  margin-top: 40px;
+}
+
+.priority {
+font-size: 15px;
+}
+
+.form {
+  width: 20rem;
+}
+
+mat-slider {
+width: 300px;
+}
+
+::ng-deep .mat-card-title{
+text-align: center;
+}
+
+::ng-deep .mat-card-subtitle{
+text-align: center;
+}
+
+.form-control {
+  display: block;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: center;
+}

@@ -64,3 +64,10 @@ tr.employee-element-row:not(.employee-expanded-row):active {
 .employee-element-description-attribution {
     opacity: 0.5;
 }
+
+#title-container {
+    display: flex;
+    flex-direction: column;
+    margin: 24px;
+    align-items: center;
+}
