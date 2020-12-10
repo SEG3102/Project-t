@@ -1,6 +1,6 @@
 import { UtilsService } from './../../../core/services/utils.service';
 import { Router } from '@angular/router';
-import {MatRadioModule} from '@angular/material/radio';
+import { MatRadioModule } from '@angular/material/radio';
 import {
   FormBuilder,
   FormControl,
@@ -16,7 +16,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdmitPatientComponent implements OnInit {
   checked = false;
-
+  priority: number = 1;
+  updateSetting(event) {
+    this.priority = event.value;
+  }
   admitPatient: FormGroup;
   departments = [
     { value: 'd1', viewValue: 'Department 1' },
@@ -34,15 +37,16 @@ export class AdmitPatientComponent implements OnInit {
     private fb: FormBuilder,
     private utils: UtilsService,
     private router: Router
-    ) {}
+  ) { }
 
   ngOnInit(): void {
     this.admitPatient = this.fb.group({
-      patient: new FormControl('Department 1'),
+      patient: new FormControl(this.patients, Validators.required),
       localDoctor: new FormControl('', Validators.required),
-      room: new FormControl('', Validators.required),
-      bed: new FormControl('', Validators.required),
+      room: new FormControl(''),
+      bed: new FormControl(''),
       PIN: new FormControl('PIN'),
+      priority: new FormControl(this.priority),
       department: new FormControl(this.selectedDepartment),
       note: new FormControl('Patients Notes'),
     });
@@ -55,7 +59,7 @@ export class AdmitPatientComponent implements OnInit {
   }
 
   admitPatientToDepartment() {
-    const { patient, localDoctor, room, bed, PIN, department, note } = this.admitPatient.value;
+    const { patient, localDoctor, room, bed, PIN, priority, department, note } = this.admitPatient.value;
 
     this.utils.setDoc('ADMISSION', {
       patient: patient,
@@ -63,11 +67,19 @@ export class AdmitPatientComponent implements OnInit {
       room: room,
       bed: bed,
       pin: PIN,
+      priority: priority,
       department: department,
       note: note
     });
-  }
+    console.log(this.admitPatient)
 
+    if (this.admitPatient.status == "INVALID") {
+      alert("Please complete the form or press Cancel")
+    } else {
+      alert("Sucessfully admitted Patient!")
+      this.router.navigate([''])
+    }
+  }
   cancel() {
     this.router.navigate([''])
   }
