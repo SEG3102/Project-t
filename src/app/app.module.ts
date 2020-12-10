@@ -26,6 +26,8 @@ import { MedicalPrescriptionComponent } from './core/modules/medicalPrescribtion
 import { AdminComponent } from './core/modules/admin/admin.component';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { UpdatePatientComponent } from './core/modules/updatePatient/update-patient.component';
+import { ConsultPatientComponent } from './core/modules/consultPatient/consult-patient.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -44,17 +46,17 @@ import { RequestListComponent } from './core/modules/request-list/request-list.c
     RegisterPatientComponent,
     MedicalPrescriptionComponent,
     AdminComponent,
+    UpdatePatientComponent,
+    ConsultPatientComponent,
     AdmitPatientComponent,
     DivisionInfoComponent,
     RequestListComponent,
   ],
   imports: [
     ReactiveFormsModule,
-    MatSlideToggleModule,
     BrowserModule,
     MatExpansionModule,
     AppRoutingModule,
-    MatSliderModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
@@ -69,7 +71,6 @@ import { RequestListComponent } from './core/modules/request-list/request-list.c
     MatIconModule,
     MatTableModule,
     MatCheckboxModule,
-    MatSelectModule,
   ],
   providers: [],
   bootstrap: [
@@ -79,6 +80,7 @@ import { RequestListComponent } from './core/modules/request-list/request-list.c
     HeaderComponent,
     MedicalPrescriptionComponent,
     RegisterPatientComponent,
+    UpdatePatientComponent
   ],
 })
-export class AppModule {}
+export class AppModule { }
