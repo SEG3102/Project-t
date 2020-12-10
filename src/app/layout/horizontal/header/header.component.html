@@ -8,16 +8,22 @@
           <mat-icon>search</mat-icon>
         </button>
         <span class="large-spacer"></span>
-        <mat-expansion-panel>
+        <div *ngIf="this.userSettings.name != null">
+        <mat-expansion-panel matTooltipPosition="left" matTooltipShowDelay="400" matTooltip="Account Settings">
           <mat-expansion-panel-header>
             <mat-panel-title>
-              <button mat-icon-button matTooltipPosition="left" matTooltipShowDelay="400" matTooltip="Account Settings" mat-icon-button color="grey" aria-label="profile icon">
+              <mat-panel-description>
+                {{ this.userSettings.name }} {{ this.userSettings.lastName }}
+              </mat-panel-description>
+              <button mat-icon-button color="grey" aria-label="profile icon">
                 <mat-icon>account_circle</mat-icon>
               </button>
             </mat-panel-title>
           </mat-expansion-panel-header>
+          <button mat-button>Admission Requests</button>
           <button mat-button color="warn" (click)="logOut()">Log Out</button>
         </mat-expansion-panel>
+      </div>
         <!-- <span matTooltip="About us">{{ pageTitle }}</span><span class="example-spacer"></span> -->
     </mat-toolbar-row>
 </mat-toolbar>

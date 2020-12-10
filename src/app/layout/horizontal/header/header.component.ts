@@ -1,6 +1,7 @@
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Component, Input, OnInit } from '@angular/core';
 import { UtilsService } from './../../../core/services/utils.service';
+import { AuthService } from './../../../core/services/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,10 +12,13 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   @Input() pageTitle: string;
   authState: any = null;
+  userSettings;
+  loggedIn;
 
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
+    private auth: AuthService,
     private utils: UtilsService
     ) { }
 
@@ -22,9 +26,13 @@ export class HeaderComponent implements OnInit {
       this.afAuth.authState.subscribe(authState => {
       this.authState = authState;
     })
+    this.auth.userSettings$.subscribe(data => {
+      this.userSettings = data;
+    })
   }
 
   logOut() {
+    this.userSettings.name = null;
     this.utils.logOut().then(() => this.router.navigate(['login']));
   }
 

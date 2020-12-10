@@ -5,6 +5,22 @@
   height: 70vh;
 }
 
+.mat-card-image {
+  width: 80%;
+  height: 100%;
+  max-width: 80%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
 .button1 {
   margin-left: 15px;
   margin-right: 15px;
